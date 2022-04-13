@@ -15,13 +15,13 @@ export class BooksService {
     return this.booksRepository.save(createBookDto);
   }
   async findAll(): Promise<Book[]> {
-    return this.booksRepository.find({ relations: ['publisher'] });
+    return this.booksRepository.find({ relations: ['publisher', 'comments'] });
   }
 
   async findOne(id: number): Promise<Book> {
     return this.booksRepository.findOne({
       where: { id },
-      relations: ['publisher'],
+      relations: ['publisher', 'comments'],
     });
   }
 

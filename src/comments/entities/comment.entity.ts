@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { PrimaryGeneratedColumn, Column, Entity } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
+import { Book } from '../../books/entities/book.entity';
 
 @Entity()
 export class Comment {
@@ -25,4 +26,7 @@ export class Comment {
   @ApiProperty({ example: 'johndoe' })
   @Column()
   username: string;
+
+  @ManyToOne(() => Book, (book: Book) => book.comments)
+  book: Book;
 }

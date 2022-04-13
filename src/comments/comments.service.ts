@@ -16,12 +16,13 @@ export class CommentsService {
   }
 
   async findAll(): Promise<Comment[]> {
-    return this.commentsRepository.find();
+    return this.commentsRepository.find({ relations: ['book'] });
   }
 
   async findOne(id: number): Promise<Comment> {
     return this.commentsRepository.findOne({
       where: { id },
+      relations: ['book'],
     });
   }
 

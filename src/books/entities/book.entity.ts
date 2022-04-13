@@ -1,6 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Publisher } from '../../publishers/entities/publisher.entity';
+import { Comment } from '../../comments/entities/comment.entity';
 
 @Entity()
 export class Book {
@@ -37,4 +44,7 @@ export class Book {
   @ApiProperty({ example: { id: 1 } })
   @ManyToOne(() => Publisher, (publisher: Publisher) => publisher.books)
   publisher: Publisher;
+
+  @OneToMany(() => Comment, (comments: Comment) => comments.book)
+  comments: Comment[];
 }

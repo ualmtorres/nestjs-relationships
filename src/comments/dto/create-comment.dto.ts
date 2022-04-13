@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Book } from '../../books/entities/book.entity';
 export class CreateCommentDto {
   @ApiProperty({ example: 'Genial!!' })
   readonly title: string;
@@ -14,4 +15,7 @@ export class CreateCommentDto {
 
   @ApiProperty({ example: 'johndoe' })
   readonly username: string;
+
+  @ApiProperty({ example: { id: 1 }, type: String })
+  readonly book: Book;
 }
