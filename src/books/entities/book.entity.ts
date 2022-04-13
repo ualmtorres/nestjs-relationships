@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { Publisher } from '../../publishers/entities/publisher.entity';
 
 @Entity()
 export class Book {
@@ -32,4 +33,8 @@ export class Book {
   @ApiProperty({ example: 'www.imagen.com/quijote.png' })
   @Column()
   image_url: string;
+
+  @ApiProperty({ example: { id: 1 } })
+  @ManyToOne(() => Publisher, (publisher: Publisher) => publisher.books)
+  publisher: Publisher;
 }

@@ -14,14 +14,14 @@ export class BooksService {
   async create(createBookDto: CreateBookDto): Promise<Book> {
     return this.booksRepository.save(createBookDto);
   }
-
   async findAll(): Promise<Book[]> {
-    return this.booksRepository.find({});
+    return this.booksRepository.find({ relations: ['publisher'] });
   }
 
   async findOne(id: number): Promise<Book> {
     return this.booksRepository.findOne({
       where: { id },
+      relations: ['publisher'],
     });
   }
 

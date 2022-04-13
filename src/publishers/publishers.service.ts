@@ -16,12 +16,13 @@ export class PublishersService {
   }
 
   async findAll(): Promise<Publisher[]> {
-    return this.publishersRepository.find();
+    return this.publishersRepository.find({ relations: ['books'] });
   }
 
   async findOne(id: number): Promise<Publisher> {
     return this.publishersRepository.findOne({
       where: { id },
+      relations: ['books'],
     });
   }
 
