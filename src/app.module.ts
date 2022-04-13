@@ -6,6 +6,7 @@ import { configService } from './config/config.service';
 import { PublishersModule } from './publishers/publishers.module';
 import { BooksModule } from './books/books.module';
 import { CommentsModule } from './comments/comments.module';
+import { KeywordsModule } from './keywords/keywords.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { CommentsModule } from './comments/comments.module';
     PublishersModule,
     BooksModule,
     CommentsModule,
+    KeywordsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
