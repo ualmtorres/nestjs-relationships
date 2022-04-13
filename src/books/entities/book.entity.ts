@@ -4,10 +4,13 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Publisher } from '../../publishers/entities/publisher.entity';
 import { Comment } from '../../comments/entities/comment.entity';
+import { Keyword } from '../../keywords/entities/keyword.entity';
 
 @Entity()
 export class Book {
@@ -47,4 +50,8 @@ export class Book {
 
   @OneToMany(() => Comment, (comments: Comment) => comments.book)
   comments: Comment[];
+
+  @ManyToMany(() => Keyword, (keyword: Keyword) => keyword.books)
+  @JoinTable()
+  keywords: Keyword[];
 }

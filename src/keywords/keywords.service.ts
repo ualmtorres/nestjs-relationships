@@ -16,12 +16,13 @@ export class KeywordsService {
   }
 
   async findAll(): Promise<Keyword[]> {
-    return this.keywordsRepository.find();
+    return this.keywordsRepository.find({ relations: ['books'] });
   }
 
   async findOne(id: number): Promise<Keyword> {
     return this.keywordsRepository.findOne({
       where: { id },
+      relations: ['books'],
     });
   }
 

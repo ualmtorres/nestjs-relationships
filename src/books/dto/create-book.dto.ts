@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Publisher } from '../../publishers/entities/publisher.entity';
+import { Keyword } from '../../keywords/entities/keyword.entity';
 
 export class CreateBookDto {
   @ApiProperty({ example: 'Don Quijote de la Mancha' })
@@ -24,4 +25,7 @@ export class CreateBookDto {
 
   @ApiProperty({ example: { id: 1 } })
   readonly publisher: Publisher;
+
+  @ApiProperty({ example: [{ id: 1 }, { id: 2 }] })
+  readonly keywords: Keyword[];
 }
